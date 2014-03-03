@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Unencryptor</title>
+  </head>
+
+  <body>
+    <h1>Unencryptor</h1>
+
+    <button id="unencrypt">What's the Secret?</button>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+
+    <script>
+
+    var unencryptor = {
+      getPassword: function() {
+        this.password = prompt("Enter password");
+      },
+      getText: function() {
+        this.cypherText = document.URL.split('?')[1];
+      },
+      unencrypt: function() {
+        this.getPassword();
+        this.getText();
+        return CryptoJS.AES.unencrypt(this.cypherText, this.password).toString(CryptoJS.enc.Utf8);
+      }
+    };
+
+    document.getElementById('unencrypt').onclick = function() {alert(decoder.decrypt()); };
+    </script>
+  </body>
+</html>
